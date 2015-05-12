@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"github.com/revel/revel"
 	"github.com/mrjones/oauth"
-	"github.com/revel/samples/chat/app/models"
+	"pro3App/app/models"
 )
 
 type Application struct {

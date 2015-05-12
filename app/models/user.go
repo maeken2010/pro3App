@@ -10,6 +10,7 @@ type User struct {
 
 type DBUser struct {
     Id     int
+    Time   string
     Name   string
     MessageText string
 }

@@ -47,24 +47,25 @@ func (c Application) EnterDemo(user, demo string) revel.Result {
 	// // 表示用情報をセット
 	// setUserData(account.Name, account.ProfileImageURL)
 	user = account.Name
-	demo = "websocket"
+	// demo = "websocket"
 	}
-
 
 	if c.Validation.HasErrors() {
 		c.Flash.Error("Please choose a nick name and the demonstration type.")
 		return c.Redirect(Application.Index)
 	}
 
-	switch demo {
-	case "refresh":
-		return c.Redirect("/refresh?user=%s", user)
-	case "longpolling":
-		return c.Redirect("/longpolling/room?user=%s", user)
-	case "websocket":
-		return c.Redirect("/websocket/room?user=%s", user)
-	}
-	return nil
+	return c.Redirect("/websocket/room?user=%s", user)
+
+	// switch demo {
+	// case "refresh":
+	// 	return c.Redirect("/refresh?user=%s", user)
+	// case "longpolling":
+	// 	return c.Redirect("/longpolling/room?user=%s", user)
+	// case "websocket":
+	// 	return c.Redirect("/websocket/room?user=%s", user)
+	// }
+	// return nil
 }
 
 func (c Application) Authenticate(oauth_verifier string) revel.Result {

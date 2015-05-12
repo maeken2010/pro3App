@@ -3,6 +3,7 @@ package controllers
 import (
   // "fmt"
 	"strings"
+	"time"
 	"golang.org/x/net/websocket"
 	"github.com/revel/revel"
 	"pro3App/app/chatroom"
@@ -46,7 +47,8 @@ func (c WebSocket) RoomSocket(user string, ws *websocket.Conn) revel.Result {
      	r := strings.NewReplacer("<", "&lt;", ">", "&gt;") //replace html tags
      	remsg := r.Replace(msg)
      	// DbMap.Insert(&models.DBUser{0, user, fmt.Sprint(remsg)})
-     	DbMap.Insert(&models.DBUser{0, user, remsg})
+     	t := time.Now()
+     	DbMap.Insert(&models.DBUser{0, t.Format("2006/01/02 15:04:05 MST"), user, remsg})
 			newMessages <- remsg
 		}
 	}()

@@ -21,6 +21,7 @@ func InitDB() {
 
     // ここで好きにテーブルを定義する
     t := DbMap.AddTable(models.DBUser{}).SetKeys(true, "Id")
+    t.ColMap("Time").MaxSize = 100
     t.ColMap("Name").MaxSize = 20
     t.ColMap("MessageText").MaxSize = 140
 

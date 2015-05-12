@@ -13,9 +13,9 @@ html, body {
 #signin {
     margin: 10px auto;
     width: 400px;
-    border: 8px solid #333;
+    /*border: 8px solid #333;*/
     padding: 20px;
-    background: #fff;
+    /*background: #fff;*/
     text-align: left;
 }
 
@@ -142,11 +142,13 @@ h1 a {
 }
 
 .toolbar {
+    text-align: center;
+    white-space: nowrap;
     height: 50px;
 }
 
 .toolbar a {
-    float: right;
+    display: inline-block;
     text-decoration: none;
     background-color: #1196FC;
     color: white;

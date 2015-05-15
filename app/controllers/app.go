@@ -57,15 +57,6 @@ func (c Application) EnterDemo(user, demo string) revel.Result {
 
 	return c.Redirect("/websocket/room?user=%s", user)
 
-	// switch demo {
-	// case "refresh":
-	// 	return c.Redirect("/refresh?user=%s", user)
-	// case "longpolling":
-	// 	return c.Redirect("/longpolling/room?user=%s", user)
-	// case "websocket":
-	// 	return c.Redirect("/websocket/room?user=%s", user)
-	// }
-	// return nil
 }
 
 func (c Application) Authenticate(oauth_verifier string) revel.Result {
@@ -81,7 +72,7 @@ func (c Application) Authenticate(oauth_verifier string) revel.Result {
 		return c.Redirect(Application.EnterDemo)
 	}
 
-	requestToken, url, err := TWITTER.GetRequestTokenAndUrl("http://133.13.56.216:9000/Application/Authenticate")
+	requestToken, url, err := TWITTER.GetRequestTokenAndUrl("http://localhost:9000/Application/Authenticate")
 	if err == nil {
 		// We received the unauthorized tokens in the OAuth object - store it before we proceed
 		user.RequestToken = requestToken
@@ -92,24 +83,6 @@ func (c Application) Authenticate(oauth_verifier string) revel.Result {
 	return c.Redirect(Application.EnterDemo)
 }
 
-// func (c Application) showUserAndImg() revel.Result{
-// 	users := getUser()
-
-// 	resp, _ := TWITTER.Get(
-// 	"https://api.twitter.com/1.1/account/verify_credentials.json",
-// 	map[string]string{},
-// 	users.AccessToken,
-// 	)
-// 	defer resp.Body.Close()
-// 	account := struct {
-// 		Name            string `json:"screen_name"`
-// 		ProfileImageURL string `json:"profile_image_url"`
-// 	}{}
-// 	_ = json.NewDecoder(resp.Body).Decode(&account)
-// 	// // 表示用情報をセット
-// 	// setUserData(account.Name, account.ProfileImageURL)
-// 	return account.Name
-// }
 
 func getUser() *models.User {
 	return models.FindOrCreate("guest")

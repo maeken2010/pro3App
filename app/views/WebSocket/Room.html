@@ -1,8 +1,20 @@
 {{set . "title" "Chat room"}}
 {{template "header.html" .}}
 
+<div class="toptitle">
 <h1>Chat room — You are now chatting as {{.user}}
   <a href="/">Leave the chat room</a></h1>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-6">
+<p>ここがげーむがめんです</p>
+</div>
+
+<div class="col-md-6">
+
 
 <div id="thread">
   <script type="text/html" id="message_tmpl">
@@ -46,6 +58,10 @@
   <input type="submit" value="send" id="send">
 </div>
 
+</div>
+</div>
+</div>
+
 <script type="text/javascript">
 
   // Create a socket
@@ -74,5 +90,6 @@
       e.preventDefault()
     }
   })
-
 </script>
+
+{{template "footer.html" .}}

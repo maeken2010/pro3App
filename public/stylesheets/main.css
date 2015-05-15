@@ -1,9 +1,9 @@
-html, body {
+/*html, body {
     background: #ddd;
     padding: 0;
     margin: 0;
     font-family: Helvetica, Arial, Sans;
-}
+}*/
 
 #home {
     margin: 100px auto;
@@ -52,7 +52,7 @@ html, body {
     font-size: 14px;
 }
 
-h1 {
+.toptitle h1 {
     background: #111;
     margin: 0;
     color: gold;
@@ -69,15 +69,36 @@ h1 a {
 
 #thread {
     position: fixed;
-    top: 50px;
-    left: 14px;
+
+    top: 70px;
+    left: 50%;
     right: 14px;
-    bottom: 100px;
+    bottom: 50px;
+    height:400px;
+
+    width: 50%;
     background: white;
     border-bottom: 3px solid #666;
     padding: 10px;
     overflow-y: scroll;
 }
+
+
+/*#thread {
+    position: static;
+
+    top: 50px;
+    left: 14px;
+    right: 14px;
+    bottom: 200px;
+height:400px;
+
+    background: white;
+    border-bottom: 3px solid #666;
+    padding: 10px;
+    overflow-y: scroll;
+}
+*/
 
 .message {
     border-bottom: 1px solid #efefef;
@@ -103,7 +124,7 @@ h1 a {
 .message p {
     font-size: 12px;
     padding: 5px;
-    margin: 0 0 0 110px;
+    margin: 0 0 0 100px;
 }
 
 .message.you * {
@@ -125,15 +146,16 @@ h1 a {
 
 .message.notice p {
     margin: 0;
-    padding-left: 115px;
+    padding-left: 110px;
 }
 
 #newMessage {
-    position: fixed;
+    position: static;
     left: 14px;
     right: 14px;
     bottom: 30px;
     height: 60px;
+    top: 150px;
 }
 
 #newMessage #message {

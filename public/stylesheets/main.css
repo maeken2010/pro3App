@@ -67,38 +67,42 @@ h1 a {
     color: lightblue;
 }
 
-#thread {
+/*#rightpage{
     position: fixed;
-
+    overflow: scroll;
     top: 70px;
     left: 50%;
     right: 14px;
     bottom: 50px;
-    height:400px;
+    height:500px;
 
     width: 50%;
     background: white;
     border-bottom: 3px solid #666;
     padding: 10px;
-    overflow-y: scroll;
+
+}
+*/
+#thread {
+
 }
 
 
-/*#thread {
+#rightpage {
     position: static;
 
-    top: 50px;
+    top: 80px;
     left: 14px;
     right: 14px;
     bottom: 200px;
-height:400px;
+height:500px;
 
     background: white;
     border-bottom: 3px solid #666;
     padding: 10px;
     overflow-y: scroll;
 }
-*/
+
 
 .message {
     border-bottom: 1px solid #efefef;
@@ -181,4 +185,5 @@ height:400px;
     border-radius: 10px;
     padding: 3px 15px 3px 15px;
 }
+
 

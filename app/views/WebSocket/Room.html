@@ -1,22 +1,42 @@
 {{set . "title" "Chat room"}}
 {{template "header.html" .}}
 
-<div class="toptitle">
-<h1>Chat room — You are now chatting as {{.user}}
-  <a href="/">Leave the chat room</a></h1>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+          <div class="navbar-header">
+<a class="navbar-brand" href="#">Chat room — You are now chatting as {{.user}}</a>
 </div>
+  <p class="navbar-text navbar-right"><a href="/" class="navbar-link">Leave the chat room</a></p>
+
+</div>
+</nav>
 
 <div class="container-fluid">
 <div class="row">
 
 <div class="col-md-6">
 <p>ここがげーむがめんです</p>
+
+  <input type="submit" value="send" id="send" class="btn btn-primary">
+  <script type="text/html" id="message_tmpl">
+    <% if(event.Type == 'getitem') { %>
+      <div class="message important">
+        <h2></h2>
+        <p>
+          you get message!
+        </p>
+      </div>
+  </script>
+
+
 </div>
 
 <div class="col-md-6">
 
 
+<div id="rightpage">
 <div id="thread">
+
   <script type="text/html" id="message_tmpl">
     <% if(event.Type == 'message') { %>
       <div class="message <%= event.User == '{{.user}}' ? 'you' : '' %>">
@@ -50,12 +70,35 @@
         </p>
       </div>
     <% } %>
+
+    <% if(event.Type == 'getitem') { %>
+      <div class="message important">
+        <h2></h2>
+        <p>
+          You are now disconnected!
+        </p>
+      </div>
+    <% } %>
+    <% if(event.Type == '') { %>
+      <div class="message important">
+        <h2></h2>
+        <p>
+          You are now disconnected!
+        </p>
+      </div>
+    <% } %>
   </script>
 </div>
 
+<div>
+  <p id="pToShow"></p> <!-- スクロール先 -->
+</div>
+ <!-- <input id="eom" type="text" style="width:1px; height:1px; disaply:none">
+ --></div>
+
 <div id="newMessage">
   <input type="text" id="message" autocomplete="off" autofocus>
-  <input type="submit" value="send" id="send">
+  <input type="submit" value="send" id="send" onclick="showIt('pToShow');" class="btn btn-default">
 </div>
 
 </div>
@@ -90,6 +133,9 @@
       e.preventDefault()
     }
   })
+
+
+
 </script>
 
 {{template "footer.html" .}}

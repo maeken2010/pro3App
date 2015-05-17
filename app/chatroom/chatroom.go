@@ -45,7 +45,7 @@ func Leave(user string) {
 	publish <- newEvent("leave", user, "")
 }
 
-const archiveSize = 10
+const archiveSize = 20
 
 var (
 	// Send a channel here to get room events back.  It will send the entire

@@ -72,7 +72,7 @@ func (c Application) Authenticate(oauth_verifier string) revel.Result {
 		return c.Redirect(Application.EnterDemo)
 	}
 
-	requestToken, url, err := TWITTER.GetRequestTokenAndUrl("http://localhost:9000/Application/Authenticate")
+	requestToken, url, err := TWITTER.GetRequestTokenAndUrl("http://10.0.7.154:9000/Application/Authenticate")
 	if err == nil {
 		// We received the unauthorized tokens in the OAuth object - store it before we proceed
 		user.RequestToken = requestToken

@@ -34,3 +34,11 @@
     return data ? fn( data ) : fn;
   };
 })();
+
+//指定したIDへスクロール
+function showIt(elID) {
+    var el = document.getElementById(elID);
+    el.scrollIntoView(true);
+
+
+}

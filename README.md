@@ -1,7 +1,7 @@
 ### これは何
 pro3の最初の課題です．oauth認証を行ってchatをします．
 
-言語はGo，仕様Frameworkはrevelです．
+言語はGo，使用Frameworkはrevelです．
 
 ### 使い方
 revel run pro3App

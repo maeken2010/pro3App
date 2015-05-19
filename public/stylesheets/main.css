@@ -83,7 +83,19 @@ h1 a {
 
 }
 */
-#thread {
+#gameThread {
+    position: static;
+
+    top: 80px;
+    left: 14px;
+    right: 14px;
+    bottom: 200px;
+    height:500px;
+
+    background: white;
+    border-bottom: 3px solid #666;
+    padding: 10px;
+    overflow-y: scroll;
 
 }
 
@@ -95,7 +107,7 @@ h1 a {
     left: 14px;
     right: 14px;
     bottom: 200px;
-height:500px;
+    height:500px;
 
     background: white;
     border-bottom: 3px solid #666;

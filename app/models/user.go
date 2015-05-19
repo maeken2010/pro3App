@@ -1,6 +1,9 @@
 package models
 
-import "github.com/mrjones/oauth"
+import (
+"time"
+"github.com/mrjones/oauth"
+)
 
 type User struct {
   Username     string
@@ -10,7 +13,7 @@ type User struct {
 
 type DBUser struct {
     Id     int
-    Time   string
+    Time   time.Time
     Name   string
     MessageText string
 }

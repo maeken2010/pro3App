@@ -12,6 +12,13 @@ type Event struct {
 	Text      string // What the user said (if Type == "message")
 }
 
+// type Request struct {
+// 	Req      string
+// 	// User      string
+// 	// Timestamp int    // Unix timestamp (secs)
+// 	// Text      string // What the user said (if Type == "message")
+//}
+
 type Subscription struct {
 	Archive []Event      // All the events from the archive.
 	New     <-chan Event // New events coming in.
@@ -26,6 +33,10 @@ func (s Subscription) Cancel() {
 func newEvent(typ, user, msg string) Event {
 	return Event{typ, user, int(time.Now().Unix()), msg}
 }
+
+// func newRequest(req string) Request {
+// 	return Request{req}
+// }
 
 func Subscribe() Subscription {
 	resp := make(chan Subscription)
@@ -43,6 +54,10 @@ func Say(user, message string) {
 
 func Leave(user string) {
 	publish <- newEvent("leave", user, "")
+}
+
+func Req(user string, req string) {
+	publish <- newEvent("req",user,req)
 }
 
 const archiveSize = 20

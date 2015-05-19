@@ -16,19 +16,28 @@
 
 <div class="col-md-6">
 <p>ここがげーむがめんです</p>
-
-<!--   <input type="submit" value="send" id="send" class="btn btn-primary">
-  <script type="text/html" id="message_tmpl">
-    <% if(event.Type == 'getitem') { %>
-      <div class="message important">
-        <h2></h2>
-        <p>
-          you get message!
-        </p>
-      </div>
-  </script>
+<!--   <input type="text" id="req" autocomplete="off">
  -->
+ <input type="submit" value="test" id="sendreq" onclick="sendRequest('0');" class="btn btn-primary">
+  <input type="submit" value="test" id="sendreq" onclick="sendRequest('1');" class="btn btn-primary">
+ <input type="submit" value="test" id="sendreq" onclick="sendRequest('2');" class="btn btn-primary">
+ <input type="submit" value="test" id="sendreq" onclick="sendRequest('3');" class="btn btn-primary">
 
+
+  <div id="gameThread">
+
+    <script type="text/html" id="message_gmae">
+      <% if(event.Type == 'req') { %>
+        <div class="message">
+          <h2><%= event.User %></h2>
+          <p>
+            <%= event.Text %>
+          </p>
+        </div>
+      <% } %>
+    </script>
+
+  </div>
 </div>
 
 <div class="col-md-6">
@@ -110,6 +119,8 @@
   // Create a socket
   var socket = new WebSocket('ws://'+window.location.host+'/websocket/room/socket?user={{.user}}')
 
+  var gameSocket = new WebSocket('ws://'+window.location.host+'/websocket/room/game')
+
   // Display a message
   var display = function(event) {
     $('#thread').append(tmpl('message_tmpl', {event: event}));
@@ -135,7 +146,33 @@
   })
 
 
+  var gameDisplay = function(event) {
+    $('#gameThread').append(tmpl('message_gmae', {event: event}));
+    $('#gameThread').scrollTo('max')
+  }
 
+  gameSocket.onmessage = function(event) {
+    gameDisplay(JSON.parse(event.data))
+  }
+
+  // $('#sendreq').click(function(e) {
+  //   var req = $('#req').val()
+  //   $('#req').val('')
+  //   gameSocket.send(req)
+  // });
+
+  // $('#req').keypress(function(e) {
+  //   if(e.charCode == 13 || e.keyCode == 13) {
+  //     $('#sendreq').click()
+  //     e.preventDefault()
+  //   }
+  // })
+
+function sendRequest(e) {
+    // var el = document.getElementById(e);
+    gameSocket.send(e)
+
+}
 </script>
 
 {{template "footer.html" .}}
